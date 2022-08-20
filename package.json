@@ -2,6 +2,7 @@
   "name": "ami.js",
   "version": "0.32.0",
   "main": "build/ami.js",
+  "types": "build/src/ami.d.ts",
   "keywords": [
     "ami",
     "ami.js",
