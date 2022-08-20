@@ -1,6 +1,7 @@
 import WidgetsCss from './widgets.css';
 
-import {COLORS} from '../core/core.colors';
+import { Matrix4, Vector3 } from 'three';
+import { COLORS } from '../core/core.colors';
 import CoreUtils from '../core/core.utils';
 
 interface WidgetParameter {
@@ -8,15 +9,15 @@ interface WidgetParameter {
   frameIndex: number;
   hideMesh: boolean;
   hideHandleMesh: boolean;
-  ijk2LPS: THREE.Matrix4;
-  lps2IJK: THREE.Matrix4;
+  ijk2LPS: Matrix4;
+  lps2IJK: Matrix4;
   pixelSpacing: number;
   stack: {};
   ultrasoundRegions: Array<{}>;
-  worldPosition: THREE.Vector3;
+  worldPosition: Vector3;
 }
 
-interface USRegion {
+export interface USRegion {
   x0: number;
   x1: number;
   y0: number;
@@ -234,7 +235,11 @@ const widgetsBase = (three = (window as any).THREE) => {
      *
      * @returns {Object}
      */
-    public getDistanceData(pointA: THREE.Vector3, pointB: THREE.Vector3, calibrationFactor: number) {
+    public getDistanceData(
+      pointA: THREE.Vector3,
+      pointB: THREE.Vector3,
+      calibrationFactor: number
+    ) {
       let distance = null;
       let units = null;
 
